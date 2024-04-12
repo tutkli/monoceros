@@ -4,6 +4,6 @@
 
 <style>
 	div {
-		background-image: url('/login/back.jpg');
+		background-image: url('/login/background.svg');
 	}
 </style>
