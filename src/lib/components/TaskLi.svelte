@@ -4,8 +4,25 @@
 	import { Label } from '$lib/components/ui/label'
 	import { Button } from '$lib/components/ui/button'
 	import { EllipsisVertical } from 'lucide-svelte'
+	import { onMount } from 'svelte'
+	import { annotate } from 'rough-notation'
+	import type { RoughAnnotation } from 'rough-notation/lib/model'
 
 	export let task: Task
+	let element: HTMLSpanElement
+	let annotation: RoughAnnotation
+
+	onMount(() => {
+		annotation = annotate(element, {
+			type: 'strike-through',
+			color: '#3241AE',
+		})
+		if (task.completed) annotation.show()
+	})
+
+	function handleChecked() {
+		annotation.show()
+	}
 </script>
 
 <li class="flex items-center rounded-md bg-background px-4 py-2 shadow-sm">
@@ -13,12 +30,13 @@
 		<Checkbox
 			id={task.id + '-checkbox'}
 			bind:checked={task.completed}
+			on:click={handleChecked}
 			aria-labelledby={task.id + '-label'} />
 		<Label
 			id={task.id + '-label'}
 			for={task.id + '-checkbox'}
-			class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-			{task.title}
+			class="text-sm font-medium leading-none text-foreground peer-checked:opacity-70 peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+			<span bind:this={element}>{task.title}</span>
 		</Label>
 	</div>
 
