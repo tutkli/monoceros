@@ -4,10 +4,11 @@
 	import { Input } from '$lib/components/ui/input/index'
 	import { superForm } from 'sveltekit-superforms'
 	import { zod } from 'sveltekit-superforms/adapters'
-	import { loginSchema } from './schema'
 	import type { PageData } from './$types'
 	import { toast } from 'svelte-sonner'
 	import { goto } from '$app/navigation'
+	import { loginSchema } from '$lib/schemas/login.schema'
+	import { userStore } from '$lib/stores/user.store'
 
 	export let data: PageData
 
@@ -19,7 +20,8 @@
 		resetForm: false,
 		onUpdate({ form }) {
 			if (form.valid) {
-				toast.success('Valid data!')
+				userStore.set({ username: form.data.username })
+				toast.success(`Welcome ${form.data.username}!`)
 				goto('/app')
 			}
 		},
@@ -33,18 +35,19 @@
 		<Card.Header class="items-center">
 			<img src="/monoceros.png" width="128" height="128" alt="Project logo" class="mb-4" />
 			<Card.Title class="text-2xl">¡Bienvenido a Monoceros!</Card.Title>
+			<Card.Description>Tu aplicación Todo local</Card.Description>
 		</Card.Header>
 		<Card.Content class="grid gap-4">
-			<Form.Field {form} name="email">
+			<Form.Field {form} name="username">
 				<Form.Control let:attrs>
 					<div class="grid gap-2">
-						<Form.Label for="email">Email</Form.Label>
+						<Form.Label for="username">Username</Form.Label>
 						<Input
 							{...attrs}
-							id="email"
-							type="email"
-							placeholder="m@example.com"
-							bind:value={$formData.email} />
+							id="username"
+							type="text"
+							placeholder="Enter username"
+							bind:value={$formData.username} />
 					</div>
 				</Form.Control>
 				<Form.FieldErrors />
