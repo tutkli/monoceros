@@ -4,24 +4,35 @@
 	import { Label } from '$lib/components/ui/label'
 	import { Button } from '$lib/components/ui/button'
 	import { EllipsisVertical } from 'lucide-svelte'
-	import { onMount } from 'svelte'
+	import { createEventDispatcher, onMount } from 'svelte'
 	import { annotate } from 'rough-notation'
 	import type { RoughAnnotation } from 'rough-notation/lib/model'
 
+	const dispatch = createEventDispatcher()
+
 	export let task: Task
+	let mounted: boolean
 	let element: HTMLSpanElement
 	let annotation: RoughAnnotation
+
+	$: {
+		if (mounted) {
+			if (task.completed) annotation.show()
+			else annotation.hide()
+		}
+	}
 
 	onMount(() => {
 		annotation = annotate(element, {
 			type: 'strike-through',
 			color: '#3241AE',
 		})
-		if (task.completed) annotation.show()
+
+		mounted = true
 	})
 
-	function handleChecked() {
-		annotation.show()
+	function handleClick() {
+		dispatch('clicked')
 	}
 </script>
 
@@ -30,7 +41,7 @@
 		<Checkbox
 			id={task.id + '-checkbox'}
 			bind:checked={task.completed}
-			on:click={handleChecked}
+			on:click={handleClick}
 			aria-labelledby={task.id + '-label'} />
 		<Label
 			id={task.id + '-label'}
