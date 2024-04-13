@@ -8,7 +8,12 @@
 
 <Tooltip.Root>
 	<Tooltip.Trigger asChild let:builder>
-		<Button on:click={toggleMode} variant="ghost" size="icon" builders={[builder]}>
+		<Button
+			on:click={toggleMode}
+			variant="outline"
+			size="icon"
+			builders={[builder]}
+			class="ml-auto">
 			<Sun
 				class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
 			<Moon
@@ -16,5 +21,5 @@
 			<span class="sr-only">Toggle theme</span>
 		</Button>
 	</Tooltip.Trigger>
-	<Tooltip.Content side="right" sideOffset={5}>Cambiar tema</Tooltip.Content>
+	<Tooltip.Content sideOffset={5}>Cambiar tema</Tooltip.Content>
 </Tooltip.Root>
