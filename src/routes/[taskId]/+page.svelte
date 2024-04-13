@@ -1,15 +1,15 @@
 <script lang="ts">
 	import type { PageData } from './$types'
+	import TaskLi from '$lib/components/TaskLi.svelte'
 
 	export let data: PageData
 	const list = data.list
 </script>
 
-<p>{list.name}</p>
+<h2 class="text-xl font-semibold">{list.name}</h2>
 
-<h2>Here are the tasks</h2>
-<ul>
+<ul class="space-y-2">
 	{#each list.tasks as task (task.id)}
-		<li>{task.title}</li>
+		<TaskLi {task} />
 	{/each}
 </ul>

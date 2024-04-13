@@ -47,7 +47,7 @@
 				</Button>
 			</div>
 		</header>
-		<main class="flex flex-1 flex-col gap-4 bg-muted/40 p-4 lg:gap-6 lg:p-6">
+		<main class="flex flex-1 flex-col gap-4 bg-muted/80 p-4 dark:bg-muted/40 lg:gap-6 lg:p-6">
 			<div class="flex items-center">
 				<h1 class="text-lg font-semibold md:text-2xl">Good morning! 👋</h1>
 			</div>

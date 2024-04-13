@@ -14,7 +14,7 @@
 			href={list.id}
 			class={cn(
 				'mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-primary',
-				$page.url.pathname === list.id ? 'bg-muted' : ''
+				$page.url.pathname === '/' + list.id ? 'bg-muted' : ''
 			)}>
 			<!--			<Home class="h-5 w-5" />-->
 			{list.name}
