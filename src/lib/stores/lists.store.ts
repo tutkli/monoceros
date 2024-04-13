@@ -11,13 +11,13 @@ export const listsStore = writable<List[]>([
 				id: nanoid(),
 				title: 'Make a todo application',
 				description: 'A todo list app made with svelte',
-				completed: true,
+				completed: false,
 			},
 			{
 				id: nanoid(),
 				title: 'React to bind changes',
 				description: 'Save state when editing a todo',
-				completed: false,
+				completed: true,
 			},
 			{
 				id: nanoid(),
@@ -35,6 +35,11 @@ export const listsStore = writable<List[]>([
 				title: 'Save data in local storage',
 				completed: false,
 			},
+			{
+				id: nanoid(),
+				title: 'Task detail',
+				completed: false,
+			},
 		],
 	},
 	{
@@ -43,7 +48,7 @@ export const listsStore = writable<List[]>([
 		tasks: [
 			{
 				id: nanoid(),
-				title: 'Something to think about',
+				title: 'Something to think about a lot',
 				completed: false,
 			},
 		],

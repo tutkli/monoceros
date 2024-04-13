@@ -19,7 +19,7 @@
 			<!--			<Home class="h-5 w-5" />-->
 			{list.name}
 			<Badge
-				variant="secondary"
+				variant={$page.url.pathname === '/' + list.id ? 'default' : 'secondary'}
 				class="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
 				{list.tasks.length}
 			</Badge>

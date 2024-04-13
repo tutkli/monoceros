@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types'
-	import TaskLi from '$lib/components/TaskLi.svelte'
+	import TaskLi from '$lib/components/TaskRow.svelte'
 	import { listsStore } from '$lib/stores/lists.store'
 
 	export let data: PageData

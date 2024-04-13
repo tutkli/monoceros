@@ -20,7 +20,6 @@
 		<div class="flex h-full max-h-screen flex-col gap-2">
 			<div class="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
 				<MonocerosLogo />
-				<ModeButton />
 			</div>
 			<div class="flex-1">
 				<NavigationMenu />
@@ -40,12 +39,13 @@
 					<MobileNavigationMenu />
 				</Sheet.Content>
 			</Sheet.Root>
-			<div class="w-full flex-1">
-				<Button variant="secondary" class="w-full md:w-2/3 lg:w-1/3">
+			<div class="flex w-full flex-1 justify-center">
+				<Button variant="secondary" class="w-full md:w-2/3 xl:w-1/3">
 					<Search class="mr-2 size-4" />
 					Search tasks
 				</Button>
 			</div>
+			<ModeButton />
 		</header>
 		<main class="flex flex-1 flex-col gap-4 bg-muted/80 p-4 dark:bg-muted/40 lg:gap-6 lg:p-6">
 			<div class="flex items-center">
