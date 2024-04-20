@@ -1,8 +1,9 @@
-import { writable } from 'svelte/store'
+import { type Writable, writable } from 'svelte/store'
 import type { List } from '$lib/schemas/task.schema'
 import { nanoid } from 'nanoid'
+import { getContext, setContext } from 'svelte'
 
-export const listsStore = writable<List[]>([
+const dummyData: List[] = [
 	{
 		id: 'sJ8_HsHkRNCN21ggUhIpP',
 		name: 'My first List',
@@ -53,4 +54,16 @@ export const listsStore = writable<List[]>([
 			},
 		],
 	},
-])
+]
+
+const LISTS_CTX = 'lists_ctx';
+
+export function setListsState(initialData: List[] = dummyData) {
+	const listsState = writable<List[]>(initialData);
+	setContext(LISTS_CTX, listsState);
+	return listsState
+}
+
+export function getListsState() {
+	return getContext<Writable<List[]>>(LISTS_CTX)
+}

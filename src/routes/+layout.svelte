@@ -10,6 +10,9 @@
 	import NavigationMenu from '$lib/components/navigation/NavigationMenu.svelte'
 	import MobileNavigationMenu from '$lib/components/navigation/MobileNavigationMenu.svelte'
 	import MonocerosLogo from '$lib/components/MonocerosLogo.svelte'
+	import { setListsState } from '$lib/stores/lists.store'
+
+	setListsState()
 </script>
 
 <ModeWatcher />

@@ -1,12 +1,14 @@
 <script lang="ts">
 	import { Badge } from '$lib/components/ui/badge'
-	import { listsStore } from '$lib/stores/lists.store'
+	import { getListsState } from '$lib/stores/lists.store'
 	import { page } from '$app/stores'
 	import { cn } from '$lib/utils'
+
+	const listsState = getListsState()
 </script>
 
 <nav class="grid items-start px-2 text-sm font-medium lg:px-4">
-	{#each $listsStore as list (list.id)}
+	{#each $listsState as list (list.id)}
 		<a
 			href={list.id}
 			class={cn(

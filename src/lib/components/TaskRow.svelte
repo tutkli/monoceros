@@ -4,11 +4,9 @@
 	import { Label } from '$lib/components/ui/label'
 	import { Button } from '$lib/components/ui/button'
 	import { EllipsisVertical } from 'lucide-svelte'
-	import { createEventDispatcher, onMount } from 'svelte'
+	import { onMount } from 'svelte'
 	import { annotate } from 'rough-notation'
 	import type { RoughAnnotation } from 'rough-notation/lib/model'
-
-	const dispatch = createEventDispatcher()
 
 	export let task: Task
 	let mounted: boolean
@@ -30,10 +28,6 @@
 
 		mounted = true
 	})
-
-	function handleClick() {
-		dispatch('clicked')
-	}
 </script>
 
 <li class="flex items-center rounded-md bg-background px-4 py-2 shadow-sm">
@@ -41,7 +35,6 @@
 		<Checkbox
 			id={task.id + '-checkbox'}
 			bind:checked={task.completed}
-			on:click={handleClick}
 			aria-labelledby={task.id + '-label'} />
 		<Label
 			id={task.id + '-label'}

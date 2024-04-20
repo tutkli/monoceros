@@ -1,15 +1,17 @@
 <script lang="ts">
 	import { Badge } from '$lib/components/ui/badge/index.js'
-	import { listsStore } from '$lib/stores/lists.store'
+	import { getListsState } from '$lib/stores/lists.store'
 	import { page } from '$app/stores'
 	import { cn } from '$lib/utils'
 	import MonocerosLogo from '$lib/components/MonocerosLogo.svelte'
+
+	const listsState = getListsState()
 </script>
 
 <nav class="grid gap-2 text-lg font-medium">
 	<MonocerosLogo />
 
-	{#each $listsStore as list (list.id)}
+	{#each $listsState as list (list.id)}
 		<a
 			href={list.id}
 			class={cn(
