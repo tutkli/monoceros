@@ -11,8 +11,10 @@
 	import MobileNavigationMenu from '$lib/components/navigation/MobileNavigationMenu.svelte'
 	import MonocerosLogo from '$lib/components/MonocerosLogo.svelte'
 	import { setListsState } from '$lib/stores/lists.store'
+	import { setTasksState } from '$lib/stores/tasks.store'
 
 	setListsState()
+	setTasksState()
 </script>
 
 <ModeWatcher />

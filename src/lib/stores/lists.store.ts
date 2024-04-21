@@ -2,7 +2,7 @@ import { getContext, setContext } from 'svelte'
 import { liveQuery, type Observable } from 'dexie'
 import { db } from '$lib/db'
 
-const LISTS_CTX = 'lists_ctx'
+const LISTS_CTX = Symbol('lists_ctx')
 
 export function setListsState() {
 	const query = liveQuery(() => db.lists.toArray())

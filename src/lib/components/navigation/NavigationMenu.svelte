@@ -3,6 +3,7 @@
 	import { getListsState } from '$lib/stores/lists.store'
 	import { page } from '$app/stores'
 	import { cn } from '$lib/utils'
+	import ListForm from '$lib/components/ListForm.svelte'
 
 	const listsState = getListsState()
 </script>
@@ -25,5 +26,7 @@
 				<!--				</Badge>-->
 			</a>
 		{/each}
+
+		<ListForm />
 	{/if}
 </nav>

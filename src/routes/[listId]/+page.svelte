@@ -2,17 +2,19 @@
 	import TaskRow from '$lib/components/TaskRow.svelte'
 	import { page } from '$app/stores'
 	import { getListsState } from '$lib/stores/lists.store'
+	import { getTasksState } from '$lib/stores/tasks.store'
 
-	// TODO +page.ts
 	const listsState = getListsState()
-	$: selectedList = $listsState.find(list => list.id === $page.params.taskId)
+	const allTasks = getTasksState()
+	$: selectedList = $listsState?.find(list => list.id === $page.params.listId)
+	$: selectedListTasks = $allTasks?.map(task => task.list === $page.params.listId) || []
 </script>
 
 {#if selectedList}
 	<h2 class="text-xl font-semibold">{selectedList.name}</h2>
 
 	<ul class="space-y-2">
-		{#each selectedList.tasks as task (task.id)}
+		{#each selectedListTasks as task (task.id)}
 			<TaskRow bind:task />
 		{/each}
 	</ul>
