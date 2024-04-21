@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Task } from '$lib/schemas/task.schema'
+	import type { Task } from '$lib/schemas/list.schema'
 	import { Checkbox } from '$lib/components/ui/checkbox'
 	import { Label } from '$lib/components/ui/label'
 	import { Button } from '$lib/components/ui/button'
